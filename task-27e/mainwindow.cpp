@@ -8,18 +8,18 @@
 mainwindow::mainwindow(QWidget *parent):QWidget(parent)
 {
     codec = QTextCodec::codecForName("utf-8");
-    setWindowTitle("Squaring");
+    setWindowTitle(codec->toUnicode("Возведение в квадрат"));
     frame = new QFrame(this);
     frame->setFrameShadow(QFrame::Raised);
     frame->setFrameShape(QFrame::Panel);
-    inputLabel = new QLabel(codec->toUnicode("Enter a number:"),this);
+    inputLabel = new QLabel(codec->toUnicode("Введите число:"),this);
     inputEdit = new QLineEdit("",this);
     StrValidator *v=new StrValidator(inputEdit);
     inputEdit->setValidator(v);
-    outputLabel = new QLabel(codec->toUnicode("Result:"),this);
+    outputLabel = new QLabel(codec->toUnicode("Результат:"),this);
     outputEdit = new QLineEdit("",this);
-    nextButton = new QPushButton(codec->toUnicode("Next"),this);
-    exitButton = new QPushButton(codec->toUnicode("Exit"),this);
+    nextButton = new QPushButton(codec->toUnicode("Следующее"),this);
+    exitButton = new QPushButton(codec->toUnicode("Выход"),this);
     QVBoxLayout *vLayout1 = new QVBoxLayout(frame);
     vLayout1->addWidget(inputLabel);
     vLayout1->addWidget(inputEdit);
@@ -72,10 +72,10 @@ void mainwindow::calc()
     else
         if (!str.isEmpty())
         {
-        QMessageBox msgBox(QMessageBox::Information,
-                           "Squaring",
-                           "Invalid value",
-                           QMessageBox::Ok);
+            QMessageBox msgBox(QMessageBox::Information,
+                               codec->toUnicode("Возведение в квадрат."),
+                               codec->toUnicode("Введено неверное значение."),
+                               QMessageBox::Ok);
             msgBox.exec();
         }
 }
