@@ -4,13 +4,14 @@
 #include <QHBoxLayout>
 mainwindow::mainwindow(QWidget *parent):QWidget(parent)
 {
- this->setWindowTitle("Counter");
- label1 = new QLabel("Count 1");
- label2 = new QLabel("Count 5");
+ codec = QTextCodec::codecForName("utf-8");
+ this->setWindowTitle(codec->toUnicode("Счетчик"));
+ label1 = new QLabel(codec->toUnicode("Cчет по 1"),this);
+ label2 = new QLabel(codec->toUnicode("Cчет по 5"),this);
  edit1 = new Counter("0",this);
  edit2 = new Counter("0",this);
- calcbutton = new QPushButton("+1",this);
- exitbutton = new QPushButton("Quit");
+ calcbutton=new QPushButton("+1",this);
+ exitbutton=new QPushButton(codec->toUnicode("Выход"),this);
  QHBoxLayout *layout1 = new QHBoxLayout();
  layout1->addWidget(label1);
  layout1->addWidget(label2);
