@@ -2,9 +2,10 @@
 #include "QVBoxLayout"
 Window::Window()
 {
- this->setWindowTitle("Event handling");
+ codec = QTextCodec::codecForName("utf-8");
+ this->setWindowTitle(codec->toUnicode("Обработка событий"));
  area = new Area( this );
- btn = new QPushButton("Quit");
+ btn = new QPushButton(codec->toUnicode("Завершить"),this );
  QVBoxLayout *layout = new QVBoxLayout(this);
  layout->addWidget(area);
  layout->addWidget(btn);
