@@ -1,7 +1,6 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 #include "QWidget"
-#include "QtGui"
 #include "area.h"
 #include "Qpushbutton"
 class Window : public QWidget
