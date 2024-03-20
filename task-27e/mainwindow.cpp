@@ -1,10 +1,8 @@
 #include "mainwindow.h"
 #include "QVBoxLayout"
 #include "QMessageBox"
-#include <qtextcodec.h>
-#include <qtextcodec>
-#include <locale.h>
-
+#include "qtextcodec.h"
+#include "qtextcodec"
 mainwindow::mainwindow(QWidget *parent):QWidget(parent)
 {
     codec = QTextCodec::codecForName("utf-8");
@@ -34,12 +32,12 @@ mainwindow::mainwindow(QWidget *parent):QWidget(parent)
     hLayout->addWidget(frame);
     hLayout->addLayout(vLayout2);
     begin();
-    connect(exitButton,SIGNAL(clicked(bool)),
-            this,SLOT(close()));
-    connect(nextButton,SIGNAL(clicked(bool)),
-            this,SLOT(begin()));
-    connect(inputEdit,SIGNAL(returnPressed()),
-            this,SLOT(calc()));
+    connect(exitButton, &QPushButton::clicked,
+            this, &mainwindow::close);
+    connect(nextButton, &QPushButton::clicked,
+            this,&mainwindow::begin);
+    connect(inputEdit,&QLineEdit::returnPressed,
+            this,&mainwindow::calc);
 }
 void mainwindow::begin()
 {
@@ -54,12 +52,12 @@ void mainwindow::begin()
 }
 void mainwindow::calc()
 {
-    bool Ok=true; float r,a;
-    QString str=inputEdit->text();
-    a=str.toDouble(&Ok);
+    bool Ok = true; float r,a;
+    QString str = inputEdit->text();
+    a = str.toDouble(&Ok);
     if (Ok)
     {
-        r=a*a;
+        r = a*a;
         str.setNum(r);
         outputEdit->setText(str);
         inputEdit->setEnabled(false);
