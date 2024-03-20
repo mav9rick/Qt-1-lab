@@ -17,8 +17,8 @@ public slots:
     {
         QString str=text();
         int r=str.toInt();
-        if (r!=0 && r%5 ==0) emit tick_signal();
         r++;
+        if (r!=0 && r%5 ==0) emit tick_signal();
         str.setNum(r);
         setText(str);
     }
